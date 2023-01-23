@@ -4,7 +4,7 @@ namespace ConsoleApp1
 {
     internal class Program
     {
-        
+
         static void Main(string[] args)
         {
             #region CyclesAndRandoms
@@ -47,16 +47,88 @@ namespace ConsoleApp1
             #region Array
             int[] cucubers = new int[10];
 
-            cucubers[7] = 13;
-            cucubers[3] = 3;
-            
 
-            for (int i = 0; i < cucubers.Length; i++)
+
+            for (int i = 0; i < cucubers.Length; i++)//заполняем массив рандомными числами
             {
                 cucubers[i] = rand.Next(0, 101);
-                Console.WriteLine(cucubers[i] + " ");
+                Console.Write(cucubers[i] + " ");
             }
+
+            //дан массив, найдем максимально значение
+            int maxElement = int.MinValue;
             
+            for(int i = 0; i < cucubers.Length; i++)
+            {
+                if(maxElement < cucubers[i])
+                {
+                    maxElement = cucubers[i];
+                }
+            }
+            Console.WriteLine("\nМаксимальное число в массиве: " + maxElement);
+            Console.ReadKey();
+            Console.Clear();
+            #endregion
+
+            #region Программа бронирования мест в самолете
+            bool isOpen = true;
+            int[] sectors = { 6, 28, 15, 15, 17 };
+
+            while (isOpen)
+            {
+                Console.SetCursorPosition(0, 18);
+
+                for(int i = 0; i < sectors.Length; i++)
+                {
+                    Console.WriteLine($"В секторе {i + 1} свободно {sectors[i]} мест.");
+                }
+
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine("Регистрация рейса.");
+                Console.WriteLine("\n\n1 - забронировать места\n\n2 - выход из программы.\n\n");
+                Console.Write("Введите номер команды: ");
+                var namberCommand = Console.ReadLine();
+                
+                
+                switch (namberCommand)
+                {
+                    case "1":
+                        int userSector, userPlaceAmount;
+                        Console.Write("В каком секторе вы хотите лететь? ");
+                        userSector = Convert.ToInt32(Console.ReadLine()) - 1;
+                        if(sectors.Length <= userSector || userSector < 0)
+                        {
+                            Console.WriteLine("Такого сектора не существует.");
+                            break;
+                        }
+                        Console.Write("Сколько мест вы хотите забронировать? ");
+                        userPlaceAmount = Convert.ToInt32(Console.ReadLine());
+                        if(userPlaceAmount < 0)
+                        {
+                            Console.WriteLine("неверное количество мест.");
+                            break;
+                        }
+                        if(sectors[userSector] < userPlaceAmount)
+                        {
+                            Console.WriteLine($"В секторе {userSector} недостаточно мест." +
+                                $" Остаток {sectors[userSector]}");
+                            break;
+                        }
+                        sectors[userSector] -= userPlaceAmount;
+                        Console.WriteLine("Бронирование успешно!");
+                        break;
+                    case "2":
+                        isOpen = false;
+                        break;
+                    case "":
+                        Console.WriteLine("Введите команду!");
+                        break;
+                    
+                    
+                }
+                Console.ReadKey();
+                Console.Clear();
+            }
             #endregion
         }
 

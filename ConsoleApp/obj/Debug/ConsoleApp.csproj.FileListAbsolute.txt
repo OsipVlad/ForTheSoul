@@ -6,3 +6,11 @@ D:\ProgaC\ForTheSoul\ConsoleApp\bin\Debug\ConsoleApp.exe
 D:\ProgaC\ForTheSoul\ConsoleApp\bin\Debug\ConsoleApp.pdb
 D:\ProgaC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.exe
 D:\ProgaC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.pdb
+G:\OnlyC\ForTheSoul\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+G:\OnlyC\ForTheSoul\ConsoleApp\bin\Debug\ConsoleApp.exe
+G:\OnlyC\ForTheSoul\ConsoleApp\bin\Debug\ConsoleApp.pdb
+G:\OnlyC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.csproj.AssemblyReference.cache
+G:\OnlyC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.csproj.SuggestedBindingRedirects.cache
+G:\OnlyC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
+G:\OnlyC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.exe
+G:\OnlyC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.pdb
