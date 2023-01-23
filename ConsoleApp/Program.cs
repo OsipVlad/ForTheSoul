@@ -2,10 +2,12 @@
 
 namespace ConsoleApp1
 {
-    internal class Cyclesandrandoms
+    internal class Program
     {
+        
         static void Main(string[] args)
         {
+            #region CyclesAndRandoms
             Random rand = new Random();
             float health1 = rand.Next(90, 100);
             int damage1 = rand.Next(15, 20);
@@ -38,6 +40,31 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Гладиатор 2 пал");
             }
+            Console.ReadKey();
+            Console.Clear();
+            #endregion
+
+            #region Array
+            int[] cucubers = new int[10];
+
+            cucubers[7] = 13;
+            cucubers[3] = 3;
+            
+
+            for (int i = 0; i < cucubers.Length; i++)
+            {
+                cucubers[i] = rand.Next(0, 101);
+                Console.WriteLine(cucubers[i] + " ");
+            }
+            
+            #endregion
         }
+
+
+
+
+
+
+
     }
 }

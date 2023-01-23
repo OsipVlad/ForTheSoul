@@ -1,0 +1,8 @@
+D:\ProgaC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.csproj.AssemblyReference.cache
+D:\ProgaC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.csproj.SuggestedBindingRedirects.cache
+D:\ProgaC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
+D:\ProgaC\ForTheSoul\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+D:\ProgaC\ForTheSoul\ConsoleApp\bin\Debug\ConsoleApp.exe
+D:\ProgaC\ForTheSoul\ConsoleApp\bin\Debug\ConsoleApp.pdb
+D:\ProgaC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.exe
+D:\ProgaC\ForTheSoul\ConsoleApp\obj\Debug\ConsoleApp.pdb
