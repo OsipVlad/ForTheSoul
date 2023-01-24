@@ -159,13 +159,13 @@ namespace ConsoleApp1
 
             int userX = 1, userY = 1;
             char[] bag = new char[1];
-
-            while (true)
+            isOpen = true;
+            while (isOpen)
             {
 
                 Console.SetCursorPosition(0, 20);
                 Console.Write("Сумка: ");
-
+                Console.WriteLine("\nНажмите Esc для выхода.");
                 for (int i = 0; i < bag.Length; i++)
                 {
                     Console.Write(bag[i] + " ");
@@ -208,6 +208,9 @@ namespace ConsoleApp1
                             userY++;
                         }
                         break;
+                    case ConsoleKey.Escape:
+                        isOpen = false;
+                        break;
                 }
 
                 if(map[userX, userY] == 'X')
@@ -227,6 +230,32 @@ namespace ConsoleApp1
 
             }
             #endregion
+
+            #region Функции, ref и out. Работа с ссылками
+            int sum = 0, x = 1, y = 5;
+            Add(ref sum, x, y);//можем заменить ref на out, тогда можно не инициализировать переменную sum строкой выше
+
+            Console.WriteLine(sum);
+            Console.ReadKey();
+            Console.Clear();
+
+            int[] array = new int[5];
+            array = EditArray(array, 2, 5);//присваиваем новую ссылку для созданного массива
+            Console.WriteLine(array[2]);
+
+            #endregion
+        }
+
+        static void Add(ref int sum,int x,int y)
+        {
+            sum = x + y;
+        }
+
+        static int[] EditArray(int[] array, int index, int value)
+        {
+            array = new int[6];//создаем новый массив
+            array[index] = value;//меняем в нем значение по индексу 2
+            return array;
         }
 
 
