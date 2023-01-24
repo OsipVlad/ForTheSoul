@@ -57,10 +57,10 @@ namespace ConsoleApp1
 
             //дан массив, найдем максимально значение
             int maxElement = int.MinValue;
-            
-            for(int i = 0; i < cucubers.Length; i++)
+
+            for (int i = 0; i < cucubers.Length; i++)
             {
-                if(maxElement < cucubers[i])
+                if (maxElement < cucubers[i])
                 {
                     maxElement = cucubers[i];
                 }
@@ -78,7 +78,7 @@ namespace ConsoleApp1
             {
                 Console.SetCursorPosition(0, 18);
 
-                for(int i = 0; i < sectors.Length; i++)
+                for (int i = 0; i < sectors.Length; i++)
                 {
                     Console.WriteLine($"В секторе {i + 1} свободно {sectors[i]} мест.");
                 }
@@ -88,27 +88,27 @@ namespace ConsoleApp1
                 Console.WriteLine("\n\n1 - забронировать места\n\n2 - выход из программы.\n\n");
                 Console.Write("Введите номер команды: ");
                 var namberCommand = Console.ReadLine();
-                
-                
+
+
                 switch (namberCommand)
                 {
                     case "1":
                         int userSector, userPlaceAmount;
                         Console.Write("В каком секторе вы хотите лететь? ");
                         userSector = Convert.ToInt32(Console.ReadLine()) - 1;
-                        if(sectors.Length <= userSector || userSector < 0)
+                        if (sectors.Length <= userSector || userSector < 0)
                         {
                             Console.WriteLine("Такого сектора не существует.");
                             break;
                         }
                         Console.Write("Сколько мест вы хотите забронировать? ");
                         userPlaceAmount = Convert.ToInt32(Console.ReadLine());
-                        if(userPlaceAmount < 0)
+                        if (userPlaceAmount < 0)
                         {
                             Console.WriteLine("неверное количество мест.");
                             break;
                         }
-                        if(sectors[userSector] < userPlaceAmount)
+                        if (sectors[userSector] < userPlaceAmount)
                         {
                             Console.WriteLine($"В секторе {userSector} недостаточно мест." +
                                 $" Остаток {sectors[userSector]}");
@@ -123,11 +123,108 @@ namespace ConsoleApp1
                     case "":
                         Console.WriteLine("Введите команду!");
                         break;
-                    
-                    
+
+
                 }
                 Console.ReadKey();
                 Console.Clear();
+            }
+            #endregion
+
+            #region Игра "Бродилка"
+
+            Console.CursorVisible = false;
+            char[,] map =
+            {
+                {'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#', },
+                {'#',' ',' ','#',' ','#',' ',' ',' ','X',' ',' ',' ',' ','#',' ',' ',' ','#', },
+                {'#',' ',' ','#',' ','#',' ',' ',' ',' ',' ',' ',' ',' ','#','X',' ',' ','#', },
+                {'#',' ',' ','#',' ','#','#','#','#','#','#',' ',' ',' ',' ',' ',' ',' ','#', },
+                {'#',' ',' ','#',' ',' ',' ',' ',' ',' ','#',' ',' ','#',' ','#','#',' ','#', },
+                {'#',' ','X','#',' ','#','#',' ',' ',' ','#',' ',' ','#',' ','#','X',' ','#', },
+                {'#',' ',' ','#',' ',' ','#',' ',' ',' ','#',' ',' ','#',' ','#',' ',' ','#', },
+                {'#',' ',' ','#',' ',' ','#',' ',' ',' ','#',' ',' ','#',' ','#',' ',' ','#', },
+                {'#',' ',' ','#',' ',' ','#','X',' ',' ','#',' ',' ','#',' ','#',' ',' ','#', },
+                {'#',' ',' ',' ',' ',' ','#','#','#',' ','#',' ',' ','#',' ',' ',' ',' ','#', },
+                {'#',' ',' ','#',' ',' ','#',' ',' ',' ','#',' ',' ','#',' ',' ',' ',' ','#', },
+                {'#',' ',' ','#',' ',' ','#',' ',' ',' ','#',' ',' ','#',' ',' ',' ',' ','#', },
+                {'#',' ',' ','#',' ',' ','#',' ',' ',' ','#',' ',' ','#',' ',' ',' ',' ','#', },
+                {'#',' ',' ','#',' ',' ',' ',' ',' ','#','#',' ',' ','#',' ',' ',' ',' ','#', },
+                {'#',' ',' ','#','#','#','#','#',' ','#',' ',' ','X',' ',' ',' ',' ',' ','#', },
+                {'#',' ',' ',' ',' ',' ',' ','#',' ','#',' ','#','#','#','#','#','#',' ','#', },
+                {'#',' ',' ',' ','X',' ',' ','#',' ','#',' ','#','X',' ',' ',' ',' ',' ','#', },
+                {'#',' ',' ',' ',' ',' ',' ','#',' ',' ',' ','#',' ',' ',' ',' ',' ',' ','#', },
+                {'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#', },
+            };
+
+            int userX = 1, userY = 1;
+            char[] bag = new char[1];
+
+            while (true)
+            {
+
+                Console.SetCursorPosition(0, 20);
+                Console.Write("Сумка: ");
+
+                for (int i = 0; i < bag.Length; i++)
+                {
+                    Console.Write(bag[i] + " ");
+                }
+                Console.SetCursorPosition(0, 0);
+                for (int i = 0; i < map.GetLength(0); i++)
+                {
+                    for (int j = 0; j < map.GetLength(1); j++)
+                    {
+                        Console.Write(map[i, j]);
+                    }
+                    Console.WriteLine();
+                }
+                Console.SetCursorPosition(userY, userX);
+                Console.Write("@");
+                ConsoleKeyInfo charKey = Console.ReadKey();
+                switch (charKey.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        if(map[userX -1, userY] != '#')
+                        {
+                            userX--;
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (map[userX + 1, userY] != '#')
+                        {
+                            userX++;
+                        }
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        if (map[userX, userY - 1] != '#')
+                        {
+                            userY--;
+                        }
+                        break;
+                    case ConsoleKey.RightArrow:
+                        if (map[userX, userY + 1] != '#')
+                        {
+                            userY++;
+                        }
+                        break;
+                }
+
+                if(map[userX, userY] == 'X')
+                {
+                    map[userX, userY] = 'o';
+                    char[] tempBag = new char[bag.Length + 1];
+                    for(int i = 0; i < bag.Length; i++)
+                    {
+                        tempBag[i] = bag[i];
+                    }
+                    tempBag[tempBag.Length - 1] = 'X';
+                    bag = tempBag;
+                }
+                
+
+                Console.Clear();
+
             }
             #endregion
         }
